@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - PrintFusion AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #f5f5f5;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .colorful-header {
+            background: linear-gradient(45deg, #204ea9, #219328);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+        .order-history {
+            background: linear-gradient(135deg, #e3689c, #ff758c);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .primary-button {
+            background: linear-gradient(45deg, #c71b38, #c71b38);
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(47, 6, 169, 0.5);
+        }
+
+        .primary-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 117, 140, 0.7);
+        }
+    </style>
+</head>
+
+</head>
+
+<body>
+
+
+
+    </script>
+    <script>
+        function setActive(element) {
+            // Remove active class from all nav links
+            document.querySelectorAll("nav a span").forEach(span => {
+                span.classList.remove("font-bold");
+            });
+            // Add bold class to the clicked link
+            element.querySelector("span").classList.add("font-bold");
+        }
+    </script>
+    <!-- More Sidebar (Initially Hidden) -->
+    <div id="moreSidebar"
+        class="fixed top-0 left-[-300px] w-64 h-full bg-gray-100 shadow-lg transition-all duration-300 p-4 border-r border-gray-300">
+        <h2 class="text-xl font-semibold text-black mb-4">More Options</h2>
+        <nav class="space-y-4">
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+                <i data-lucide="tag"></i> <span>Branding</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+                <i data-lucide="rotate-ccw"></i> <span>Returns</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+                <i data-lucide="layers"></i> <span>PrintFusion AI Plans</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+                <i data-lucide="file-text"></i> <span>Terms & Policies</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+                <i data-lucide="mail"></i> <span>Contact Support</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+                <i data-lucide="settings"></i> <span>Settings</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+                <i data-lucide="help-circle"></i> <span>Help</span>
+            </a>
+        </nav>
+        <button onclick="toggleMoreSidebar()" class="absolute top-4 right-4 text-xl text-gray-700 hover:text-red-500">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+    <script>
+        lucide.createIcons(); // Initialize Lucide Icons for More Sidebar
+    </script>
+    </nav>
+    </aside>
+
+
+    <main class="p-8 w-full">
+        <header class="colorful-header">
+            Your AI-Powered Dream Orders
+
+            <p class="text-lg font-semibold ">"Seamlessly transform your ideas into reality!"</p>
+        </header>
+        <section class="order-history shadow-lg my-6">
+            <div>
+                <h3 class="text-2xl font-bold text-white">Order History</h3>
+                <p class="text-lg  text-white">"Your creative journey is just a click away!"</p>
+            </div>
+            <div>
+                <img src="https://cdn-icons-png.flaticon.com/512/2331/2331970.png" alt="Order History"
+                    class="w-16 h-16">
+            </div>
+        </section>
+
+        <section class="bg-white p-6 rounded-lg shadow-lg mt-6 border border-gray-200">
+            <h3 class="text-lg font-semibold mb-4 text-black">Your PrintFusion AI Orders</h3>
+            <p class="text-gray-700">Your creativity meets cutting-edge printing! Manage your orders seamlessly.</p>
+            <p class="text-black semi-bold mt-2">"Bring your imagination to life with PrintFusion AI – where every
+                print tells a story!"</p>
+            <div class="mt-4 flex space-x-4">
+                <button onclick="window.location.href='catalog.light.html'" class="primary-button">New
+                    Order</button>
+
+                <button class="bg-gray-900 hover:bg-gray-700 px-4 py-2 rounded-lg text-white">Import Orders</button>
+            </div>
+        </section>
+
+        <section class="mt-6 bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+            <h3 class="text-xl font-bold text-black">FAQ</h3>
+            <div class="mt-4">
+                <details class="border-b border-gray-300 py-3 cursor-pointer">
+                    <summary class="font-semibold">How long does it take to fulfill an order?</summary>
+                    <p class="mt-2">Orders typically take 2-5 business days to process.</p>
+                </details>
+                <details class="border-b border-gray-300 py-3 cursor-pointer">
+                    <summary class="font-semibold">Can I upgrade to expedited shipping?</summary>
+                    <p class="mt-2">Yes, you can select faster shipping options at checkout.</p>
+                </details>
+                <details class="border-b border-gray-300 py-3 cursor-pointer">
+                    <summary class="font-semibold">Can I change or cancel my order?</summary>
+                    <p class="mt-2">You can modify or cancel your order within 24 hours of placing it.</p>
+                </details>
+                <details class="border-b border-gray-300 py-3 cursor-pointer">
+                    <summary class="font-semibold">Do you offer bulk order discounts?</summary>
+                    <p class="mt-2">Yes, we provide special pricing for bulk orders. Contact our support team for
+                        details.</p>
+                </details>
+                <details class="border-b border-gray-300 py-3 cursor-pointer">
+                    <summary class="font-semibold">What file formats do you support for designs?</summary>
+                    <p class="mt-2">We accept PNG, JPEG, and SVG formats to ensure high-quality prints.</p>
+                </details>
+            </div>
+        </section>
+
+    </main>
+    </div>
+
+</body>
+<script>
+    // Sidebar Toggle Functionality
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        var mainContent = document.querySelector("main");
+        var toggleIcon = document.getElementById("toggleIcon");
+
+        // Check current state and toggle classes accordingly
+        if (sidebar.classList.contains("sidebar-collapsed")) {
+            // Expand sidebar
+            sidebar.classList.remove("sidebar-collapsed");
+            mainContent.classList.remove("main-expanded");
+            mainContent.classList.add("main-normal");
+            toggleIcon.setAttribute("data-lucide", "chevron-left");
+        } else {
+            // Collapse sidebar
+            sidebar.classList.add("sidebar-collapsed");
+            mainContent.classList.remove("main-normal");
+            mainContent.classList.add("main-expanded");
+            toggleIcon.setAttribute("data-lucide", "chevron-right");
+        }
+        lucide.createIcons(); // Refresh Lucide icons after updating
+    }
+
+    // Initialize Lucide Icons on Page Load
+    document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+    });
+
+    // setActive function for nav links
+    function setActive(element) {
+        document.querySelectorAll("nav a").forEach(link => {
+            link.classList.remove("bg-blue-300", "text-white");
+        });
+        element.classList.add("bg-blue-300", "text-white");
+    }
+
+    // More Sidebar Toggle Functionality
+    function toggleMoreSidebar() {
+        var sidebar = document.getElementById("moreSidebar");
+        if (sidebar.style.left === "0px") {
+            sidebar.style.left = "-300px"; // Hide sidebar
+        } else {
+            sidebar.style.left = "0px"; // Show sidebar
+        }
+    }
+
+
+    // Close More Sidebar if clicked outside
+    document.addEventListener("click", function (event) {
+        var sidebar = document.getElementById("moreSidebar");
+        var moreButton = document.querySelector('[onclick="toggleMoreSidebar()"]');
+        if (!sidebar.contains(event.target) && event.target !== moreButton) {
+            sidebar.style.left = "-300px";
+        }
+    });
+</script>
+
+</html>

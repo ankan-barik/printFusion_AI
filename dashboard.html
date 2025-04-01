@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrintFusion AI Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    aside {
+      position: fixed;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .wishlist-icon {
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .wishlist-icon:hover {
+      color: red;
+    }
+
+    /* Remove default margin from main; we will control it via classes */
+    main {
+      transition: all 0.3s ease;
+    }
+
+    /* When sidebar is expanded (default) */
+    .main-normal {
+      margin-left: 16rem;
+    }
+
+    /* When sidebar is collapsed, main content expands */
+    .main-expanded {
+      margin-left: 4rem !important;
+    }
+
+    /* Sidebar collapse styles */
+    .sidebar-collapsed {
+      width: 4rem !important;
+      overflow: hidden;
+    }
+
+    /* Hide the text labels when sidebar is collapsed */
+    .sidebar-collapsed nav a span,
+    .sidebar-collapsed h1 {
+      display: none;
+    }
+
+    /* Adjust the sidebar toggle button when collapsed */
+    .sidebar-collapsed #sidebarToggle {
+      right: -40px !important;
+    }
+
+    .carousel-container {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    /* Smooth Infinite Carousel */
+    .carousel {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      width: 100%;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: 50%;
+      gap: 5px;
+      animation: slide 10s infinite linear;
+    }
+
+    .carousel-item {
+      flex: 1 0 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 256px;
+      background: #f8f8f8;
+    }
+
+    .carousel-item img {
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0%);
+      }
+
+      25% {
+        transform: translateX(-100%);
+      }
+
+      50% {
+        transform: translateX(-200%);
+      }
+
+      75% {
+        transform: translateX(-300%);
+      }
+
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: red;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 50px;
+    }
+
+    /* Notification Box */
+    .notification-box {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      width: 300px;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      display: none;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white text-black p-4 shadow-xl border-r border-gray-300">
+      <!-- Header & Toggle Button -->
+      <div class="relative">
+        <h1 class="text-2xl font-bold mb-9 text-black">PrintFusion AI</h1>
+        <!-- Sidebar Toggle Button (Drawer Arrow) -->
+        <button onclick="toggleSidebar()" id="sidebarToggle"
+          class="absolute top-4 right-[-35px] bg-gray-300 p-2 rounded-full shadow-md transition-all">
+          <i id="toggleIcon" data-lucide="chevron-left"></i>
+        </button>
+      </div>
+      <nav class="space-y-4">
+        <!-- Add Lucide Icons -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <a href="#" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-red-300 transition fade-in"
+          onclick="setActive(this)">
+          <i data-lucide="home"></i> <span>Home</span>
+        </a>
+        <a href="light.order.html" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-red-300 transition"
+          onclick="setActive(this)">
+          <i data-lucide="shopping-cart"></i> <span>Orders</span>
+        </a>
+        <a href="catalog.light.html"
+          class="flex items-center space-x-3 p-2 rounded-lg hover:bg-red-300 transition fade-in"
+          onclick="setActive(this)">
+          <i data-lucide="box"></i> <span>Product Catalog</span>
+        </a>
+        <a href="template.light.html"
+          class="flex items-center space-x-3 p-2 rounded-lg hover:bg-red-300 transition fade-in"
+          onclick="setActive(this)">
+          <i data-lucide="layers"></i> <span>Design Templates</span>
+        </a>
+        <a href="index4.html" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-red-300 transition fade-in"
+          onclick="setActive(this)">
+          <i data-lucide="plus-circle"></i> <span>Let's Get Creative</span>
+        </a>
+        <!-- More Button in Sidebar -->
+        <a href="#" onclick="toggleMoreSidebar()"
+          class="flex items-center space-x-3 p-2 rounded-lg hover:bg-red-300 transition">
+          <i data-lucide="more-horizontal"></i> <span>More</span>
+        </a>
+        <script>
+          // Initialize Lucide Icons
+          lucide.createIcons();
+          function toggleMoreSidebar() {
+            const sidebar = document.getElementById("moreSidebar");
+            if (sidebar.classList.contains("left-[-300px]")) {
+              sidebar.classList.remove("left-[-300px]");
+              sidebar.classList.add("left-0");
+            } else {
+              sidebar.classList.remove("left-0");
+              sidebar.classList.add("left-[-300px]");
+            }
+          }
+        </script>
+        <script>
+          function setActive(element) {
+            // Remove active class from all nav links
+            document.querySelectorAll("nav a span").forEach(span => {
+              span.classList.remove("font-bold");
+            });
+            // Add bold class to the clicked link
+            element.querySelector("span").classList.add("font-bold");
+          }
+        </script>
+        <!-- More Sidebar (Initially Hidden) -->
+        <div id="moreSidebar"
+          class="fixed top-0 left-[-300px] w-64 h-full bg-gray-100 shadow-lg transition-all duration-300 p-4 border-r border-gray-300">
+          <h2 class="text-xl font-semibold text-black mb-4">More Options</h2>
+          <nav class="space-y-4">
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+              <i data-lucide="tag"></i> <span>Branding</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+              <i data-lucide="rotate-ccw"></i> <span>Returns</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+              <i data-lucide="layers"></i> <span>PrintFusion AI Plans</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+              <i data-lucide="file-text"></i> <span>Terms & Policies</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+              <i data-lucide="mail"></i> <span>Contact Support</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+              <i data-lucide="settings"></i> <span>Settings</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-300 transition">
+              <i data-lucide="help-circle"></i> <span>Help</span>
+            </a>
+          </nav>
+          <button onclick="toggleMoreSidebar()" class="absolute top-4 right-4 text-xl text-gray-700 hover:text-red-500">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <script>
+          lucide.createIcons(); // Initialize Lucide Icons for More Sidebar
+        </script>
+      </nav>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 p-8 relative main-normal">
+      <header class="flex justify-between items-center my-6">
+        <h2 class="text-2xl font-semibold text-gray-900">Hello, TEAM DART!</h2>
+        <div class="flex items-center space-x-4">
+          <div class="relative">
+            <input type="text" placeholder="Search..."
+              class="p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <span class="absolute right-2 top-2 text-gray-600 cursor-pointer">🔍</span>
+          </div>
+          <button onclick="toggleNotification()" class="text-gray-600 cursor-pointer text-xl">🔔</button>
+
+          <button onclick="window.location.href='wishlist.html'"
+            class="wishlist-icon cursor-pointer text-xl">❤️</button>
+          <button onclick="window.location.href='cart.html'" class="text-gray-600 cursor-pointer text-xl">🛒</button>
+
+          <button onclick="window.location.href='#'" class="p-2 rounded-full hover:bg-gray-200 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              class="w-6 h-6 text-black">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5.121 17.804A8.96 8.96 0 0112 15c2.525 0 4.82.98 6.879 2.804M12 12a4 4 0 100-8 4 4 0 000 8z" />
+            </svg>
+          </button>
+
+          <!-- Notification Popup -->
+          <div id="notificationBox" class="notification-box">
+            <h2 class="text-lg font-semibold"> Notifications</h2>
+            <ul class="text-sm text-gray-700 space-y-2 mt-2">
+              <li class="border-b pb-2">🚀 New product launched! Check it now.</li>
+              <li class="border-b pb-2">🔥 Limited-time discount available!</li>
+              <li>📢 Important update for our users.</li>
+            </ul>
+            <button onclick="toggleNotification()"
+              class="mt-3 w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+              Close
+            </button>
+          </div>
+        </div>
+      </header>
+      <!-- JavaScript for Notification Popup -->
+      <script>
+        function toggleNotification() {
+          var notificationBox = document.getElementById("notificationBox");
+          notificationBox.style.display =
+            notificationBox.style.display === "none" || notificationBox.style.display === ""
+              ? "block"
+              : "none";
+        }
+      </script>
+      <!-- Infinite Carousel -->
+      <section class="carousel-container rounded-lg shadow-lg">
+        <div class="carousel-track">
+          <div class="carousel-item bg-red-200 relative">
+            <img
+              src="images/black-hoodie-front-and-back-side-mockup-template-isolated-on-transparent-background-file-cut-out-ai-generated-png.webp"
+              alt="Hoodie" />
+            <span class="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">HOODIES</span>
+          </div>
+          <div class="carousel-item bg-blue-200 relative">
+            <img src="images/3-5inch-ceramic-coffee-cup-set-500x500.webp" alt="Cups" />
+            <span class="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">CUPS</span>
+          </div>
+          <div class="carousel-item bg-green-200 relative">
+            <img src="images\71F7QwI9waL._SL1500.webp" alt="Diaries" />
+            <span class="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">CASE</span>
+          </div>
+          <div class="carousel-item bg-orange-200 relative">
+            <img src="images\35-354689_close-transparent-laptop-stickers.png" alt="Wall Clock" />
+            <span
+              class="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">STICKERS</span>
+          </div>
+          <div class="carousel-item bg-purple-100 relative">
+            <img
+              src="images\medium-home-story-poster-modern-wall-art-paintings-for-living-original-imaghpftwfqkndjr.webp"
+              alt="Frames" />
+            <span class="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">FRAMES</span>
+          </div>
+        </div>
+      </section>
+      <!-- Redesigned Promotional Offer -->
+      <section class="relative bg-gradient-to-r text-black p-8 rounded-lg my-6 shadow-lg text-center">
+        <div class="absolute top-0 right-0 p-2">
+          <span class="discount-badge">20% OFF</span>
+        </div>
+        <h3 class="text-2xl font-bold">Flash Sale – 20% Off for a Limited Time!</h3>
+        <p class="text-lg mt-2">Grab your favorite items at 20% off before the deal ends. Hurry, time is running out!
+        </p>
+        <button onclick="window.location.href='catalog.light.html'"
+          class="mt-4 bg-yellow-400 hover:bg-yellow-500 px-6 py-3 text-black font-semibold rounded-lg shadow-md">Shop
+          Now</button>
+      </section>
+      <!-- Steps Section -->
+      <section class="flex justify-between gap-6 mt-6 text-center">
+        <div class="bg-white p-6 shadow-lg rounded-lg border border-gray-200 transition hover:shadow-2xl">
+          <h4 class="text-xl font-bold text-black">Step 1</h4>
+          <h3 class="text-lg font-semibold text-gray-900 mt-1">Pick your item</h3>
+          <p class="text-sm text-gray-700 mt-1">Choose from accessories, drinkware, home decor, and apparel pieces.</p>
+        </div>
+        <div class="bg-white p-6 shadow-lg rounded-lg border border-gray-200 transition hover:shadow-2xl">
+          <h4 class="text-xl font-bold text-black">Step 2</h4>
+          <h3 class="text-lg font-semibold text-gray-900 mt-1">Create awesome designs</h3>
+          <p class="text-sm text-gray-700 mt-1">Upload designs or make your own with our free tools.</p>
+        </div>
+        <div class="bg-white p-6 shadow-lg rounded-lg border border-gray-200 transition hover:shadow-2xl">
+          <h4 class="text-xl font-bold text-black">Step 3</h4>
+          <h3 class="text-lg font-semibold text-gray-900 mt-1">Order and enjoy</h3>
+          <p class="text-sm text-gray-700 mt-1">Use discount codes and order custom items you need.</p>
+        </div>
+      </section>
+      <!-- Customer Reviews -->
+      <section class="mt-10 bg-white p-6 rounded-lg shadow-lg text-center">
+        <h3 class="text-xl font-bold text-gray-800">What Our Customers Say</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+            <p class="text-gray-700">"Absolutely love the quality of the prints! Fast delivery too."</p>
+            <h5 class="mt-2 font-semibold">- Emily R.</h5>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+            <p class="text-gray-700">"The design tools are super easy to use. Highly recommend!"</p>
+            <h5 class="mt-2 font-semibold">- David L.</h5>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+            <p class="text-gray-700">"Great discounts and amazing support team!"</p>
+            <h5 class="mt-2 font-semibold">- Sarah M.</h5>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+<!-- Global Scripts -->
+<script>
+  // Sidebar Toggle Functionality
+  function toggleSidebar() {
+    var sidebar = document.getElementById("sidebar");
+    var mainContent = document.querySelector("main");
+    var toggleIcon = document.getElementById("toggleIcon");
+
+    // Check current state and toggle classes accordingly
+    if (sidebar.classList.contains("sidebar-collapsed")) {
+      // Expand sidebar
+      sidebar.classList.remove("sidebar-collapsed");
+      mainContent.classList.remove("main-expanded");
+      mainContent.classList.add("main-normal");
+      toggleIcon.setAttribute("data-lucide", "chevron-left");
+    } else {
+      // Collapse sidebar
+      sidebar.classList.add("sidebar-collapsed");
+      mainContent.classList.remove("main-normal");
+      mainContent.classList.add("main-expanded");
+      toggleIcon.setAttribute("data-lucide", "chevron-right");
+    }
+    lucide.createIcons(); // Refresh Lucide icons after updating
+  }
+
+  // Initialize Lucide Icons on Page Load
+  document.addEventListener("DOMContentLoaded", function () {
+    lucide.createIcons();
+  });
+
+  // setActive function for nav links
+  function setActive(element) {
+    document.querySelectorAll("nav a").forEach(link => {
+      link.classList.remove("bg-blue-300", "font-bold", "text-black");
+    });
+    element.classList.add("bg-blue-300", "font-bold", "text-black");
+  }
+
+  // More Sidebar Toggle Functionality
+  function toggleMoreSidebar() {
+    var sidebar = document.getElementById("moreSidebar");
+    if (sidebar.style.left === "0px") {
+      sidebar.style.left = "-300px"; // Hide sidebar
+    } else {
+      sidebar.style.left = "0px"; // Show sidebar
+    }
+  }
+
+
+  // Close More Sidebar if clicked outside
+  document.addEventListener("click", function (event) {
+    var sidebar = document.getElementById("moreSidebar");
+    var moreButton = document.querySelector('[onclick="toggleMoreSidebar()"]');
+    if (!sidebar.contains(event.target) && event.target !== moreButton) {
+      sidebar.style.left = "-300px";
+    }
+  });
+
+</script>
+
+</html>

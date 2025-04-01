@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog - PrintFusion AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .top-bar {
+            background: linear-gradient(135deg, #b40cae, #367ee9);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+        .explore-bar {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(45, 45, 45, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(36, 35, 36, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(32, 32, 32, 0.128);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .top-bar,
+        .explore-bar {
+            animation: glow 2s infinite alternate;
+        }
+
+        .btn-animated {
+            animation: pulse 1.5s infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 p-8">
+
+    <div class="top-bar">Discover Our Premium Print Products – Designed for Creativity & Innovation!🔥</div>
+
+
+
+    <!-- Featured Section -->
+    <div class="mt-5 bg-orange-100 p-6 rounded-lg flex items-center">
+        <div class="w-1/2">
+            <h2 class="text-2xl font-bold">Custom Printed & Embroidered Products</h2>
+            <p class="mt-2 text-gray-600">Use AI-powered customization to design unique prints & embroidery.</p>
+            <div class="mt-4 flex space-x-4">
+                <button onclick="window.location.href='browseproduct.html'"
+                    class=" bg-black text-white px-6 py-3 rounded-lg">
+                    Browse New Products
+                </button>
+                <button onclick="window.location.href='index4.html'"
+                    class="btn-animated bg-red-600 text-white px-6 py-3 rounded-lg">
+                    Start Designing
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Explore Bar -->
+    <div class="explore-bar">🚀 Explore the Future of Custom Printing - Unique, Bold & Vibrant Designs Await! 🎨</div>
+
+
+    <!-- Product List -->
+    <div class="mt-12 grid grid-cols-4 gap-6">
+
+        <!-- Custom T-Shirt -->
+        <a href="tshirtlight.html" class="block">
+            <div
+                class="bg-white p-4 rounded-lg shadow-lg hover:bg-gray-100 transition h-[300px] flex flex-col items-center justify-between">
+                <img src="images/Black-T-shirt.webp" alt="Custom T-Shirt"
+                    class="w-full h-[200px] object-contain rounded-lg">
+                <h3 class="text-lg font-bold mt-2">Custom T-Shirt</h3>
+            </div>
+        </a>
+
+        <!-- Personalized Mug -->
+        <a href="muglight.html" class="block">
+            <div
+                class="bg-white p-4 rounded-lg shadow-lg hover:bg-gray-100 transition h-[300px] flex flex-col items-center justify-between">
+                <img src="images/cust-mug-600x600-500x500.webp" alt="Personalized Mug"
+                    class="w-full h-[200px] object-contain rounded-lg">
+                <h3 class="text-lg font-bold mt-2">Personalized Mug</h3>
+            </div>
+        </a>
+
+        <!-- Phone Case -->
+        <a href="caselight.html" class="block">
+            <div
+                class="bg-white p-4 rounded-lg shadow-lg hover:bg-gray-100 transition h-[300px] flex flex-col items-center justify-between">
+                <img src="images/dim-smoke-premium-glass-case-for-google-pixel-8a-shock-proof-scratch-resistant-648015-1724764222-1.webp"
+                    alt="Phone Case" class="w-full h-[200px] object-contain rounded-lg">
+                <h3 class="text-lg font-bold mt-2">Phone Case</h3>
+
+            </div>
+        </a>
+
+        <!-- Mobile Skin -->
+        <a href="#" class="block">
+            <div
+                class="bg-white p-4 rounded-lg shadow-lg hover:bg-gray-100 transition h-[300px] flex flex-col items-center justify-between">
+                <img src="images/b49314d3-1943-434e-a84a-5669a4499910.webp" alt="Mobile Skin"
+                    class="w-full h-[200px] object-contain rounded-lg">
+                <h3 class="text-lg font-bold mt-2">Mobile Skin</h3>
+                <span class="text-red-800 font-bold">Coming Soon</span>
+            </div>
+        </a>
+
+        <!-- Custom Notebook -->
+        <a href="#" class="block">
+            <div
+                class="bg-white p-4 rounded-lg shadow-lg hover:bg-gray-100 transition h-[300px] flex flex-col items-center justify-between">
+                <img src="images/notebooks_promo-showcase_012x.webp" alt="Custom Notebook"
+                    class="w-full h-[200px] object-contain rounded-lg">
+                <h3 class="text-lg font-bold mt-2">Custom Notebook</h3>
+                <span class="text-red-800 font-bold">Coming Soon</span>
+            </div>
+        </a>
+
+        <!-- Customized Tote Bag -->
+        <a href="#" class="block">
+            <div
+                class="bg-white p-4 rounded-lg shadow-lg hover:bg-gray-100 transition h-[300px] flex flex-col items-center justify-between">
+                <img src="images/printful_tote_bag_front_en_oyster_front1.webp" alt="Customized Tote Bag"
+                    class="w-full h-[200px] object-contain rounded-lg">
+                <h3 class="text-lg font-bold mt-2">Customized Tote Bag</h3>
+                <span class="text-red-800 font-bold">Coming Soon</span>
+            </div>
+        </a>
+
+        <!-- Wall Poster -->
+        <a href="#" class="block">
+            <div
+                class="bg-white p-4 rounded-lg shadow-lg hover:bg-gray-100 transition h-[300px] flex flex-col items-center justify-between">
+                <img src="images/Personalized-Family-Photo-Frame-Customized-Gift-Photo-Frame-8.webp" alt="Wall Poster"
+                    class="w-full h-[200px] object-contain rounded-lg">
+                <h3 class="text-lg font-bold mt-2">Wall Poster</h3>
+                <span class="text-red-800 font-bold">Coming Soon</span>
+            </div>
+        </a>
+
+        <!-- Laptop Stickers -->
+        <a href="#" class="block">
+            <div
+                class="bg-white p-4 rounded-lg shadow-lg hover:bg-gray-100 transition h-[300px] flex flex-col items-center justify-between">
+                <img src="images/full-panel-laptop-skin-sticker-vinyl-fits-size-upto-15-6-inches-original-imagg72kuftjwvqr.webp"
+                    alt="Laptop Stickers" class="w-full h-[200px] object-contain rounded-lg">
+                <h3 class="text-lg font-bold mt-2">Laptop Stickers</h3>
+                <span class="text-red-800 font-bold">Coming Soon</span>
+            </div>
+        </a>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="mt-16 bg-gray-200 p-6 text-center rounded-lg">
+        <h2 class="text-xl font-bold">PrintFusion AI</h2>
+        <p class="text-gray-600">Fulfilling your ideas on demand</p>
+        <p class="text-gray-600">Trusted to deliver quality prints since 2025</p>
+
+        <p class="mt-4 font-bold">Contact Us</p>
+        <p>Email: support@printfusionai.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Address: 123 PrintFusion Lane, Bhubaneswar, India</p>
+        <div class="flex justify-center space-x-4 mt-4">
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                    alt="Instagram" class="w-6"></a>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                    Facebook" class="w-6"></a>
+
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn"
+                    class="w-6"></a>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png"
+                    alt="Pinterest" class="w-6"></a>
+        </div>
+    </footer>
+</body>
+
+</html>

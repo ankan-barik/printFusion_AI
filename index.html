@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintFusion AI - Build & Grow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logo span {
+            color: #007bff;
+        }
+
+        /* Modern Sign In & Sign Up Buttons with Icons */
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-btn {
+            background: none;
+            color: #333;
+            font-size: 1em;
+            padding: 8px 15px;
+            border: 2px solid #007bff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .auth-btn i {
+            font-size: 1.2em;
+        }
+
+        .auth-btn:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .get-started-btn {
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">PrintFusion <span>AI</span></div>
+        <div class="auth-buttons">
+            <button class="auth-btn" onclick="window.location.href='login.html'">
+                <i class="fas fa-user"></i> Sign In
+            </button>
+            <button class="auth-btn" onclick="window.location.href='signup.html'">
+                <i class="fas fa-user-plus"></i> Sign Up 
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="max-w-7xl mx-auto px-6 py-12 text-center">
+            <h1 class="text-6xl font-bold text-gray-900">Empower Your Creativity with
+                <div class="features flex justify-center gap-4 mt-4"></div>
+                  PrintFusion AI</h1>
+            <p class="text-gray-600 mt-2">Design, customize, and sell on-demand products with ease.</p>
+            <div class="features flex justify-center gap-4 mt-4">
+                <span class="font-bold">✔ Seamless Customization</span>
+                <span class="font-bold">✔ Premium Quality</span>
+                <span class="font-bold">✔ Fastest Fulfillment</span>
+            </div>
+            <a href="signup.html" class="font-bold bg-red-600 text-white py-3 px-6 rounded-md mt-4 inline-block hover:bg-red-700 get-started-btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- PrintFusion AI Ideas Section -->
+    <div class="max-w-7xl mx-auto px-6 py-12 text-center">
+        <h2 class="text-3xl font-bold text-gray-900">What PrintFusion AI Will Create</h2>
+        <p class="text-gray-600 mt-2">Innovative solutions to enhance your custom product experience:</p>
+        <div class="features flex justify-center gap-4 mt-4">
+            <span class="font-bold">🎨 AI-Powered Design Tools</span>
+            <span class="font-bold">🛒 Seamless E-commerce Integration</span>
+            <span class="font-bold">🚀 Fast & Reliable Fulfillment</span>
+            <span class="font-bold">📊 Sales & Performance Insights</span>
+        </div>
+    </div>
+
+    <!-- Discover More Section -->
+    <div class="max-w-7xl mx-auto px-6 py-12 text-center">
+        <h2 class="text-3xl font-bold text-gray-900">Discover more about PrintFusion AI</h2>
+        <p class="text-gray-600 mt-2">Get support every step of the way with in-depth resources and tutorials.</p>
+
+        <!-- Cards Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <img src="images\0x0.webp" alt="Print-on-demand" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">How print-on-demand works</h3>
+                    <p class="text-gray-600 text-sm mt-1">Find out the basics of print-on-demand services.</p>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <img src="images\Artboard8.webp" alt="Printful Products" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">PrintFusion Products</h3>
+                    <p class="text-gray-600 text-sm mt-1">Learn about our curated selection of products.</p>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <img src="images\1_3BEhGjwA_qtjUe4wLJpsOw.jpg" alt="Integrations" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">Integrations</h3>
+                    <p class="text-gray-600 text-sm mt-1">Get your products in front of more customers.</p>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <img src="images\isometric-business-people_1284-25090.avif" alt="Pricing" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg">Pricing</h3>
+                    <p class="text-gray-600 text-sm mt-1">Calculate how much profit you can make.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

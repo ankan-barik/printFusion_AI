@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white p-4 border-r shadow-lg overflow-y-auto h-screen fixed">
+            <nav class="space-y-4 flex flex-col items-center">
+                <button id="productBtn" class="w-full p-2 bg-gray-200 rounded-lg">🏠 Product</button>
+                <button id="uploadImageBtn" class="w-full p-2 bg-gray-200 rounded-lg">📤 Upload</button>
+                <button id="addTextBtn" class="w-full p-2 bg-gray-200 rounded-lg">🔤 Add Text</button>
+                <button id="generateAIImageBtn" class="w-full p-2 bg-gray-200 rounded-lg">🖌 Generate Design</button>
+                <input type="text" id="designSearch" placeholder="Enter design prompt" class="w-full mt-2 p-2 border rounded-lg hidden">
+                <button id="clipartBtn" class="w-full p-2 bg-gray-200 rounded-lg">🎨 Change Text Color</button>
+<input type="color" id="textColorPicker" class="mt-2 w-full p-2 border rounded-lg hidden">
+                <button id="downloadBtn" class="w-full p-2 bg-gray-200 rounded-lg">💾 Download</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8 ml-64">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Customize Your Product</h2>
+            
+            <!-- Product Selection Bar -->
+            <div class="bg-white p-4 rounded-lg shadow-md flex justify-center gap-6 mb-6">
+                <button id="selectTShirt" class="p-3 bg-gray-200 rounded-lg">👕 T-Shirt</button>
+                <button id="selectCup" class="p-3 bg-gray-200 rounded-lg">☕ Cup</button>
+                <button id="selectPhoneCase" class="p-3 bg-gray-200 rounded-lg">📱 Phone Case</button>
+            </div>
+
+            <div class="flex gap-8">
+                <div class="w-1/1 bg-white p-6 shadow-lg rounded-lg border border-gray-200 flex flex-col items-center justify-center">
+                    <div class="flex gap-2 mb-4">
+                        <button id="frontView" class="p-2 bg-gray-300 rounded">Front</button>
+                        <button id="backView" class="p-2 bg-gray-300 rounded">Back</button>
+                        <button id="outsideLabel" class="p-2 bg-gray-300 rounded">Outside Label</button>
+                        <button id="leftSleeve" class="p-2 bg-gray-300 rounded">Left Sleeve</button>
+                        <button id="rightSleeve" class="p-2 bg-gray-300 rounded">Right Sleeve</button>
+                        <button id="rotate360" class="p-2 bg-gray-300 rounded">360° View</button>
+                    </div>
+                    <div id="canvas-container" class="w-100 h-100 bg-gray-100 flex items-center justify-center rounded-lg border border-dashed">
+                        <canvas id="productCanvas" width="520" height="420"></canvas>
+                    </div>
+                </div>
+                
+                
+                <!-- Product Details -->
+                <div class="w-4/4 bg-white p-6 shadow-lg rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-bold" id="productTitle">Slim Fit Solid T-Shirt</h3>
+                    <p class="text-gray-600 mb-2" id="productPrice">
+                        <span class="text-red-600 font-bold">₹799</span> 
+                        <span class="line-through text-gray-500">₹999</span> 
+                        <span class="text-green-600">₹200 OFF</span>
+                    </p>
+                    <p class="text-gray-500 text-sm">MRP incl. of all taxes</p>
+                    
+                    <h3 class="text-lg font-semibold mt-4">Size <span id="sizeGuide" class="text-blue-500 cursor-pointer">(Size Guide)</span></h3>
+                    <div class="flex gap-2 mb-4">
+                        <button class="border p-2 rounded" data-size="S">S</button>
+                        <button class="border p-2 rounded" data-size="M">M</button>
+                        <button class="border p-2 rounded" data-size="L">L</button>
+                        <button class="border p-2 rounded" data-size="XL">XL</button>
+                        <button class="border p-2 rounded" data-size="2XL">2XL</button>
+                        <button class="border p-2 rounded" data-size="3XL">3XL</button>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold mt-4">Quantity</h3>
+                    <input type="number" min="1" value="1" class="w-16 p-2 border rounded-lg mb-4">
+
+                    <h3 class="text-lg font-semibold mt-4">Select T-Shirt Color</h3>
+                    <div class="flex gap-2 flex-wrap mt-2">
+                        <button class="w-8 h-8 square-half border" style="background-color: white;" data-color="white"></button>
+                        <button class="w-8 h-8 square-full border" style="background-color: black;" data-color="black"></button>
+                        <button class="w-8 h-8 square-full border" style="background-color: red;" data-color="red"></button>
+                        <button class="w-8 h-8 square-full border" style="background-color: blue;" data-color="blue"></button>
+                        <button class="w-8 h-8 square-full border" style="background-color: green;" data-color="green"></button>
+                        <button class="w-8 h-8 square-full border" style="background-color: yellow;" data-color="yellow"></button>
+                    </div>
+
+                    <div class="mt-6 flex justify-between items-center bg-gray-200 p-4 rounded-lg">
+                        <button class="p-3 bg-blue-600 text-white rounded-lg">🛒 Add to Cart</button>
+                        <button class="p-3 bg-red-500 text-white rounded-lg">❤️ Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintFusion - Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 20px 0;
+        }
+        
+        .feature-bar {
+            background: linear-gradient(45deg, #ff8a00, #ff3cac);
+            background-size: 300% 300%;
+            padding: 15px;
+            text-align: center;
+            border-radius: 12px;
+            animation: gradientMove 5s ease infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .feature-bar h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-card {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px  rgba(171, 173, 147, 0.8);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .product-card h2 {
+            font-size: 18px;
+            margin: 10px 0 5px;
+        }
+        
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ff5722;
+        }
+        
+        .discount {
+            font-size: 14px;
+            color: gray;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="feature-bar">
+            <h1> Featured Products </h1>
+        </div>
+        <div class="product-grid" id="product-container"></div>
+    </div>
+    
+    <script>
+        const products = [
+            { name: " Relaxed Fit T-shirt", price: 1099, discount: 1299, image: "images/Artboard8.webp" },
+            { name: " Oversized T-shirt", price: 399, discount: 499, image: "images/a020f0-4_4af514fc-73ce-4f00-b646-c0fd995df584.webp" },
+            { name: " Slim Fit Tee", price: 399, discount: 499, image: "images/311.webp" },
+            { name: " Classic T-shirt", price: 799, discount: 2449, image: "images/THECLOTHINGFACTORY-09-02-249595_1667x.webp" }
+        ];
+        
+        function loadProducts() {
+            const container = document.getElementById("product-container");
+            container.innerHTML = "";
+            
+            products.forEach(product => {
+                container.innerHTML += `
+                    <div class="product-card">
+                        <img src="${product.image}" alt="${product.name}">
+                        <h2>${product.name}</h2>
+                        <p class="price">Rs. ${product.price} ${product.discount ? `<span class="discount">Rs. ${product.discount}</span>` : ""}</p>
+                    </div>
+                `;
+            });
+        }
+        
+        document.addEventListener("DOMContentLoaded", loadProducts);
+    </script>
+</body>
+</html>

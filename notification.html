@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard with Notifications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Notification Popup */
+        .notification-box {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            width: 280px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            display: none;
+        }
+
+        .notification-box.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+
+    <!-- Dashboard Navigation Bar -->
+    <div class="flex justify-between bg-white p-4 shadow-md">
+        <h1 class="text-xl font-semibold">Dashboard</h1>
+        <div class="relative">
+            <!-- Notification Bell Icon -->
+            <button onclick="toggleNotification()" class="relative">
+                <img src="https://cdn-icons-png.flaticon.com/512/1827/1827314.png" alt="Bell" class="w-8">
+                <span class="absolute top-0 right-0 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full">3</span>
+            </button>
+
+            <!-- Notification Popup -->
+            <div id="notificationBox" class="notification-box">
+                <h2 class="text-lg font-semibold">🔔 Notifications</h2>
+                <ul class="text-sm text-gray-700 space-y-2 mt-2">
+                    <li class="border-b pb-2">🚀 New product launched! Check it now.</li>
+                    <li class="border-b pb-2">🔥 Limited-time discount available!</li>
+                    <li>📢 Important update for our users.</li>
+                </ul>
+                <button onclick="toggleNotification()" class="mt-3 w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleNotification() {
+            document.getElementById("notificationBox").classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>

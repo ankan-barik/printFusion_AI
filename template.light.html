@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Futuristic Product Templates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #f5f7fa;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Stylish Header */
+        .gradient-text {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        /* Elegant Card Styling */
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+            border: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Modern Button */
+        .modern-button {
+            background: linear-gradient(45deg, #240356, #007bff);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .modern-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(102, 16, 242, 0.4);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: white;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #007bff;
+        }
+
+        /* Smooth Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="p-5">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Templates</a>
+        <a href="#">Features</a>
+       
+    </nav>
+
+    <!-- Header Section -->
+    <header class="text-center my-10">
+        <h1 class="text-5xl gradient-text"> Create Your Dream Products</h1>
+        
+        <p class="text-gray-600 mt-3">"The Future of Product Design is Here – AI-powered & Limitless!"</p>
+        <button onclick="window.location.href='canvas.html'"class="modern-button mt-6">+ Start Creating</button>
+    </header>
+
+    <!-- How it Works Section -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center px-10">
+        <div class="card fade-in">
+            <img src="https://cdn-icons-png.flaticon.com/512/595/595631.png" class="mx-auto w-20 h-20 mb-4" />
+            <h2 class="text-xl font-bold">Step 1: Design</h2>
+            <p class="text-gray-600 mt-2">Customize your template with AI-driven tools.</p>
+        </div>
+
+        <div class="card fade-in" style="animation-delay: 0.3s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" class="mx-auto w-20 h-20 mb-4" />
+            <h2 class="text-xl font-bold">Step 2: Select Product</h2>
+            <p class="text-gray-600 mt-2">Choose from our futuristic catalog & enhance it.</p>
+        </div>
+
+        <div class="card fade-in" style="animation-delay: 0.6s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/2331/2331970.png" class="mx-auto w-20 h-20 mb-4" />
+            <h2 class="text-xl font-bold">Step 3: Publish & Sell</h2>
+            <p class="text-gray-600 mt-2">Launch your product online and start earning.</p>
+        </div>
+    </section>
+
+    <!-- JavaScript for Fade-in Effect -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let fadeInElements = document.querySelectorAll(".fade-in");
+            fadeInElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add("opacity-100", "translate-y-0");
+                }, index * 300);
+            });
+        });
+    </script>
+
+</body>
+</html>

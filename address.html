@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function selectPayment(method) {
+            document.querySelectorAll('.payment-option').forEach(btn => {
+                btn.classList.remove('bg-green-100', 'border-green-600');
+                btn.querySelector('.tick').classList.add('hidden');
+            });
+            method.classList.add('bg-green-100', 'border-green-600');
+            method.querySelector('.tick').classList.remove('hidden');
+        }
+
+        function openAddressModal() {
+            document.getElementById("addressModal").classList.remove("hidden");
+        }
+
+        function closeAddressModal() {
+            document.getElementById("addressModal").classList.add("hidden");
+        }
+    </script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Left Section: Billing Address -->
+        <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Confirm Order</h2>
+            <div class="border-b pb-4">
+                <p class="text-lg"><strong>Deliver To:</strong> <span class="text-blue-800">Ankan Barik, Barik Bhaban, 721144</span></p>
+                <!-- Add New Address Button -->
+                <button onclick="openAddressModal()" class="mt-2 text-red-600 underline">
+                    + Add New Address
+                </button>
+            </div>
+
+            <!-- Payment Options -->
+            <h3 class="text-xl font-semibold mt-4">Payment Options</h3>
+            <div class="mt-2 space-y-2">
+                <button onclick="selectPayment(this)" class="payment-option w-full flex justify-between items-center border rounded-lg p-3 hover:bg-gray-100">
+                    PF Money (Balance: ₹0.00) <span class="tick hidden text-green-600">✔</span>
+                </button>
+                <button onclick="selectPayment(this)" class="payment-option w-full flex justify-between items-center border rounded-lg p-3 hover:bg-gray-100">
+                    Pay with UPI <span class="tick hidden text-green-600">✔</span>
+                </button>
+                <button onclick="selectPayment(this)" class="payment-option w-full flex justify-between items-center border rounded-lg p-3 hover:bg-gray-100">
+                    Credit/Debit Card <span class="tick hidden text-green-600">✔</span>
+                </button>
+                <button onclick="selectPayment(this)" class="payment-option w-full flex justify-between items-center border rounded-lg p-3 hover:bg-gray-100">
+                    Net Banking <span class="tick hidden text-green-600">✔</span>
+                </button>
+                <button onclick="selectPayment(this)" class="payment-option w-full flex justify-between items-center border rounded-lg p-3 hover:bg-gray-100">
+                    Wallets (Paytm, PhonePe, Amazon Pay) <span class="tick hidden text-green-600">✔</span>
+                </button>
+                <button onclick="selectPayment(this)" class="payment-option w-full flex justify-between items-center border rounded-lg p-3 hover:bg-gray-100">
+                    Cash on Delivery (COD) <span class="tick hidden text-green-600">✔</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Section: Confirm Order & Billing Details -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold mb-3">Billing Details</h3>
+            <div class="text-gray-700 text-sm space-y-2 border-b pb-4">
+                <p>Cart Total: <span class="float-right font-medium">₹1526.67</span></p>
+                <p>Discount: <span class="float-right text-red-600">-₹100.00</span></p>
+                <p>GST: <span class="float-right">₹71.33</span></p>
+                <p>Shipping Charges: <span class="float-right text-green-600">Free</span></p>
+            </div>
+            <p class="text-lg font-bold mt-4">Total Amount: <span class="text-red-600">₹1498.00</span></p>
+
+            <!-- Confirm Order Button -->
+            <button onclick="window.location.href='checkout.html'"class="mt-4 w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700">
+                Confirm Order
+            </button>
+        </div>
+    </div>
+
+    <!-- Address Modal -->
+    <div id="addressModal" class="hidden fixed inset-0 items-center justify-center bg-gray-900 bg-opacity-50">
+        <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Add New Address</h2>
+
+            <!-- Use Current Location Button -->
+            <button class="w-full bg-blue-500 text-white py-2 rounded-lg flex justify-center items-center gap-2">
+                📍 Use my current location
+            </button>
+
+            <!-- Address Form -->
+            <div class="mt-4 space-y-3">
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="text" placeholder="First Name*" class="border p-2 rounded-lg w-full">
+                    <input type="text" placeholder="Last Name*" class="border p-2 rounded-lg w-full">
+                </div>
+                <input type="text" placeholder="House No., Building Name*" class="border p-2 rounded-lg w-full">
+                <input type="text" placeholder="Street Name, Area*" class="border p-2 rounded-lg w-full">
+                <input type="text" placeholder="Landmark" class="border p-2 rounded-lg w-full">
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="text" placeholder="Postal Code*" class="border p-2 rounded-lg w-full">
+                    <input type="text" placeholder="City/District*" class="border p-2 rounded-lg w-full">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <select class="border p-2 rounded-lg w-full">
+                        <option>India</option>
+                    </select>
+                    <select class="border p-2 rounded-lg w-full">
+                        <option>Select State*</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <select class="border p-2 rounded-lg w-full">
+                        <option>+91</option>
+                    </select>
+                    <input type="text" placeholder="Phone No.*" class="border p-2 rounded-lg w-full">
+                </div>
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" class="w-4 h-4">
+                    <span>Make this my default address</span>
+                </label>
+            </div>
+
+            <!-- Modal Buttons -->
+            <div class="flex justify-end space-x-2 mt-4">
+                <button onclick="closeAddressModal()" class="bg-gray-300 px-4 py-2 rounded-lg">Cancel</button>
+                <button class="bg-red-500 text-white px-4 py-2 rounded-lg">Save</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
